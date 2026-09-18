@@ -12,3 +12,8 @@ All the frontend code (HTML, CSS, and JavaScript) is located in one single file:
        "DefaultConnection": "Server=localhost;Database=hoteldb;User=root;Password=your_mysql_password;"
      }
    }
+
+## Commands for installation
+dotnet tool install --global dotnet-ef
+then
+dotnet ef database update
