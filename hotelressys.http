@@ -1,0 +1,46 @@
+@hotelressys_HostAddress = http://localhost:5121
+
+### 1. View all Rooms (Should be empty at first)
+GET {{hotelressys_HostAddress}}/rooms
+
+### 2. Add a New Room (Run this so we have something to book)
+POST {{hotelressys_HostAddress}}/rooms
+Content-Type: application/json
+
+{
+  "roomNumber": "101",
+  "type": "Single",
+  "pricePerNight": 100,
+  "isAvailable": true
+}
+
+### 3. Add Another Room
+POST {{hotelressys_HostAddress}}/rooms
+Content-Type: application/json
+
+{
+  "roomNumber": "102",
+  "type": "Double",
+  "pricePerNight": 150,
+  "isAvailable": true
+}
+
+### 4. View all Rooms again (You should see your two new rooms with IDs 1 and 2)
+GET {{hotelressys_HostAddress}}/rooms
+
+### 5. Book Room 1
+POST {{hotelressys_HostAddress}}/reservations
+Content-Type: application/json
+
+{
+  "roomId": 1,
+  "guestName": "Jane Doe",
+  "checkInDate": "2026-10-01T14:00:00Z",
+  "checkOutDate": "2026-10-05T11:00:00Z"
+}
+
+### 6. View all Reservations
+GET {{hotelressys_HostAddress}}/reservations
+
+### 7. View Rooms (Notice Room 1 is now "isAvailable": false)
+GET {{hotelressys_HostAddress}}/rooms
